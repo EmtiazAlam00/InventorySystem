@@ -4,7 +4,7 @@ using namespace std;
 
 #include "Location.h"
 
-const string& Location:: NONE = "Empty";
+const string Location:: NONE = "Empty";
 
 Location::Location(char code, int number) {
     id = std::string(1, code) + std::to_string(number);

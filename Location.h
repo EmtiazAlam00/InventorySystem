@@ -28,7 +28,7 @@ class Location{
     string id;
     string product;
     int quantity;
-    static const string& NONE;
+    static const string NONE;
 
 };
 #endif
