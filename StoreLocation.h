@@ -15,10 +15,10 @@ class StoreLocation : public Location{
     int getFreeSpace() const;
 
     //Inherited virtual member functions
-    int getCapacity() const override;
-    bool add(const string& prod, int qty) override;
-    bool remove(int amount) override;
-//virtual bool add(const string& prod, int qty)=0;
+    virtual int getCapacity() const override;
+    virtual bool add(const string& prod, int qty) override;
+    virtual bool remove(int amount) override;
+
 
     private:
     static const char code = 'A';
