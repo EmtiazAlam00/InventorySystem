@@ -25,10 +25,13 @@ class Queue{
     void popFirst(WHLocation** loc);
     void addLast(WHLocation* loc);
     void print() const;
+    //int count;
+    int size() const;
 
     private:
     Node* head;
     Node* tail;
+    int count;
 
 };
 #endif

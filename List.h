@@ -11,6 +11,7 @@ class List{
       Node* next;
   };
   public:
+  int size() const;
   //constructor
   List();
   //destructor
@@ -28,5 +29,6 @@ class List{
 
   private:
     Node* head;
+    int count;
 }; 
 #endif

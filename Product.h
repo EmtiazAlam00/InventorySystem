@@ -33,7 +33,7 @@ class Product {
 		void getFromWHLocations(int& quantity);
 		void fillOrder(int& quantity);
 		void stockStoreLocation();
-		void print();
+		void print() const;
 
 	
 	private:

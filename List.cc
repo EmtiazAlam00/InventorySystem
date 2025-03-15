@@ -20,6 +20,10 @@ List:: ~List(){
   }
 }
 
+int List:: size() const{
+  return count;
+}
+
 void List::add(Product* prod){
   Node* newNode = new Node();
   newNode->data = prod;
@@ -113,16 +117,14 @@ void List::findProduct(const string& name, Product** prod){
   
 }
 
-void List::print() const{
-    Node* currNode = head;
-    cout<<"Print list..."<<endl;
-
-    if (currNode == NULL){
-        cout <<"List empty"<<endl;
-    }
-
-    while(currNode != NULL){
-        currNode->data->print();
-        currNode = currNode->next;
-    }
+void List::print() const {
+  Node* currNode = head;
+  if (currNode == NULL) {
+      cout << "List is empty." << endl;
+      return;
+  }
+  while (currNode != NULL) {
+      currNode->data->print(); // Ensure Product has a `print` method
+      currNode = currNode->next;
+  }
 }

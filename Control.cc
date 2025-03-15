@@ -1,4 +1,3 @@
-
 #include "Control.h"
 #include "Queue.h"
 #include "defs.h"
@@ -8,40 +7,54 @@
 
 const string Control::PRODUCTS[10] = {"Chocolate", "Beans", "Eggs", "Milk", "Winter Jackets", "Xbox", "Playstation", "Rakes", "AOL cd", "Bikes"};
 
- const int Control::QUANTITIES[10]= {100,200,300,150,350,300,200,200,150,100};
+const int Control::QUANTITIES[10]= {100,200,300,150,350,300,200,200,150,100};
 
-void Control::launch(){
-
+void Control::launch() {
     store = new Store("My Store");
 
-    cout<<"initializing..."<<endl;
+    int choice = -1;
 
-    initStore(store);
-    
-    cout<<"initialized!"<<endl;
-    int choice = 5;
-
-    while (choice!=0){
+    while (choice != 0) {
+        cout << "Inside menu loop. Current choice: " << choice << endl; // Debug statement
         view.showMenu(choice);
-        switch(choice){
-            case 1: receiveProduct(); break;
+        switch (choice) {
+            case 1:
+                try {
+                    receiveProduct();
+                } catch (const exception& e) {
+                    cerr << "Error receiving product: " << e.what() << endl;
+                }
+                break;
             case 2: fillOrder(); break;
             case 3: store->printStoreStock(); break;
             case 4: store->printWareHouseStock(); break;
             case 5: store->printProducts(); break;
+            case 6:
+                try {
+                    initStore(store);
+                } catch (const exception& e) {
+                    cerr << "Error initializing store: " << e.what() << endl;
+                }
+                break;
+            case 0: break; // Exit
+            default: cout << "Invalid selection. Please try again." << endl; break;
         }
+        cout << "Menu loop iteration complete. Waiting for next input." << endl; // Debug statement
     }
+
     delete store;
 }
 
-void Control::receiveProduct(){
+void Control::receiveProduct() {
+    cout << "Receiving product..." << endl; // Debug statement
     string product;
-    int quantity =0;
+    int quantity = 0;
     view.getProduct(product);
     view.getQuantity(quantity);
+    cout << "Calling store->receiveProduct..." << endl; // Debug statement
     store->receiveProduct(product, quantity);
+    cout << "Product received successfully." << endl; // Debug statement
 }
-
 void Control::fillOrder(){
     string product;
     int quantity =0;
@@ -53,14 +66,12 @@ void Control::fillOrder(){
     }
 }
 
-void Control::initStore(Store* store){
-    for (int i = 0; i < 10; ++i){
-        cout<<"receiving..."<<endl;
-        store->receiveProduct(PRODUCTS[i],QUANTITIES[i]);
+void Control::initStore(Store* store) {
+    for (int i = 0; i < 10; ++i) {
+        cout << "Adding product: " << PRODUCTS[i] << " (" << QUANTITIES[i] << " units)" << endl;
+        store->receiveProduct(PRODUCTS[i], QUANTITIES[i]);
     }
 }
-
-
 void Control::locationTest(){
     string candy = "Candy";
 	string junk = "Junk";

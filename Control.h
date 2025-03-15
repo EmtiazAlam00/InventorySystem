@@ -29,9 +29,5 @@ class Control {
 
 		static const string PRODUCTS[10];
 		static const int QUANTITIES[10];
-		
-		
-		
-	
 };
 #endif

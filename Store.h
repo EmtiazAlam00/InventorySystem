@@ -38,12 +38,14 @@ class Store {
 		void receiveProduct(const string&, int quantity);
 		void fillOrder(const string&, int &quantity);
 		void print();
+		//int size() const;
 	
 	private:
 		string name;
 		StoreLocation storeLocations[SLOCS]; // statically allocated array
 		WHLocation whLocations[WHLOCS]; //statically allocated array
 		List* products;
+		//int count;
 		
 	
 };

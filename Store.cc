@@ -1,4 +1,3 @@
-
 #include "Store.h"
 
 //Constructor
@@ -53,46 +52,48 @@ void Store::printWareHouseStock() {
     }
 }
 
-// Print all products in the list
 void Store::printProducts() {
     cout << "Product List:" << endl;
-    products->print();
+    if (products->isEmpty()) {
+        cout << "No products found." << endl;
+    } else {
+        cout << "Number of products: " << products->size() << endl; // Assuming List has a `size` method
+        products->print();
+    }
 }
 
-
-void Store::receiveProduct(const string& pname, int quantity){
-    Product* prod = NULL;
-    cout<<"Receiving..."<<endl;
+void Store::receiveProduct(const string& pname, int quantity) {
+    cout << "Receiving product: " << pname << " (" << quantity << " units)" << endl; // Debug statement
+    Product* prod = nullptr;
     products->findProduct(pname, &prod);
-    if (prod==NULL){
-        cout<<"Making new product"<<endl;
+    if (prod == nullptr) {
+        cout << "Creating new product: " << pname << endl; // Debug statement
         StoreLocation* sloc;
         findAvailableSLoc(&sloc);
         prod = new Product(pname, sloc);
         products->add(prod);
-        
     }
-
-
+    cout << "Adding " << quantity << " units of " << pname << " to warehouse locations." << endl; // Debug statement
     WHLocation* bloc;
-    while(quantity > 0){
+    while (quantity > 0) {
         findAvailableWHLoc(&bloc);
-        if (quantity > bloc->getCapacity()){
+        if (quantity > bloc->getCapacity()) {
             bloc->add(pname, bloc->getCapacity());
             prod->addWHLocation(bloc);
             quantity -= bloc->getCapacity();
-        }else{
+        } else {
             bloc->add(pname, quantity);
             prod->addWHLocation(bloc);
             quantity = 0;
         }
     }
-
-    cout<<"stocking store location..."<<endl;
+    cout << "Stocking store location for " << pname << endl; // Debug statement
     prod->stockStoreLocation();
 
+    // Debug: Print the products list after adding a new product
+    cout << "Products list after adding " << pname << ":" << endl;
+    products->print();
 }
-
 void Store::fillOrder(const string& product, int& quantity){
     Product* prod;
     findProduct(product, &prod);

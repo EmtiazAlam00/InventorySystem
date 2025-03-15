@@ -113,6 +113,12 @@ void Product::stockStoreLocation(){
 	storeLocation->add(name, toAdd);
 }
 
-void Product::print(){
-	cout << "Product:   "<<name<<endl;
+// void Product::print(){
+// 	cout << "Product:   "<<name<<endl;
+// }
+
+void Product::print() const {
+    cout << "Product: " << name << endl;
+    cout << "Store Location: " << storeLocation->getId() << endl;
+    cout << "Warehouse Locations: " << whLocations->size() << endl;
 }

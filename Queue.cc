@@ -6,6 +6,9 @@ using namespace std;
 //Constructor
 Queue:: Queue():head(NULL), tail(NULL){ }
 
+int Queue:: size() const{
+    return count;
+}
 //destructor
 Queue::~Queue(){
     Node* temp;
