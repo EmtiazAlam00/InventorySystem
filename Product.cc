@@ -1,7 +1,33 @@
 
 #include "Product.h"
 
+//constructor
+Product:: Product(const string& name, StoreLocation* sloc){
+	this->name = name;
+	this->storeLocation = sloc;
+	this->whLocations = new Queue();
+}
 
+//destructor
+Product:: ~Product(){
+	delete whLocations;
+}
+
+const string& Product::getName(){
+	return name;
+}
+
+StoreLocation* Product::getStoreLocation(){
+	return storeLocation;
+}
+
+void Product:: setStoreLocation(StoreLocation* sloc){
+	storeLocation = sloc;
+}
+
+void Product :: addWHLocation(WHLocation* loc){
+	whLocations->addLast(loc);
+}
 /* We take as much as we can from the storeLocation.
    The input-output parameter quantity returns 
    the amount left to fill in the order.

@@ -54,3 +54,21 @@ void Queue::addLast(WHLocation* loc) {
         tail = newNode;
     }
 }
+
+void Queue::print() const {
+    Node* currNode = head;
+    
+    cout << "Queue contents: ";
+    
+    if (!currNode) {
+        cout << "Empty" << endl;
+        return;
+    }
+
+    while (currNode) {
+        cout << "[" << currNode->data->getId() << "] ";
+        currNode = currNode->next;
+    }
+    
+    cout << endl;
+}
