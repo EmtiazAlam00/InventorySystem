@@ -17,8 +17,8 @@ class WHLocation: public Location{
     virtual bool remove(int amount) override;
 
     private:
-    static const char code = 'B';
-    static const int capacity = WHLOC_CAPACITY;
+    static const char code;
+    static const int capacity;
     static int nextId;
 
 };

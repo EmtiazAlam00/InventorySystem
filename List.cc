@@ -72,27 +72,17 @@ void List::remove(const string& name, Product** goner){
     delete currNode;
 }
 
-void List::get(const string& name, Product** prod){
-  Node * currNode;
-  Node * prevNode;
+void List::get(const string& name, Product** prod) {
+  Node * currNode = head;
 
-  currNode = head;
-  prevNode = NULL;
-
-  while (currNode!=NULL){
-      if (currNode->data->getName() == name){
-          break; 
+  while (currNode != NULL) {
+      if (currNode->data->getName() == name) {
+          break;
       }
-      prevNode = currNode;
       currNode = currNode->next;
   }
 
-  if (currNode == NULL){
-      *prod = NULL;
-      return;
-  }
-  //currNode is not NULL
-  *prod = currNode->data;
+  *prod = (currNode == NULL) ? NULL : currNode->data;
 }
 
 void List::removeUpto(const string& name){

@@ -21,7 +21,7 @@ class StoreLocation : public Location{
 
 
     private:
-    static const char code = 'A';
+    static const char code;
     static const int capacity = SLOC_CAPACITY;
     static int nextId;
 

@@ -9,7 +9,7 @@ LDFLAGS =
 
 # Makefile settings - Can be customized.
 APPNAME = Store
-EXT = .cpp
+EXT = .cc
 SRCDIR = C:\Users\emtia\Downloads\InventorySystem
 OBJDIR = obj
 
