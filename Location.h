@@ -14,7 +14,7 @@ class Location{
     bool isAvailable() const;
     void print() const;
 
-    //virtual member functions implemented by subclass
+    //virtual member functions implemented by subclass BASE CLASS
     virtual int getCapacity() const = 0;
     virtual bool add(const string& prod, int qty)=0;
     virtual bool remove(int qty) = 0; 
