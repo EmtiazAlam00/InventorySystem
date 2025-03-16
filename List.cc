@@ -113,8 +113,16 @@ bool List::isEmpty() const{
   return head == NULL;
 }
 
-void List::findProduct(const string& name, Product** prod){
-  
+void List::findProduct(const string& name, Product** prod) {
+  Node* currNode = head;
+  while (currNode != NULL) {
+      if (currNode->data->getName() == name) {
+          *prod = currNode->data;
+          return;
+      }
+      currNode = currNode->next;
+  }
+  *prod = NULL; // Product not found
 }
 
 void List::print() const {
@@ -128,3 +136,37 @@ void List::print() const {
       currNode = currNode->next;
   }
 }
+
+//main
+
+// int main() {
+//   List productList;
+
+//   // Add products
+//   productList.add(new Product("Apple", 1.99));
+//   productList.add(new Product("Banana", 0.99));
+//   productList.add(new Product("Cherry", 2.99));
+
+//   // Print the list
+//   productList.print();
+
+//   // Remove a product
+//   Product* removedProduct = nullptr;
+//   productList.remove("Banana", &removedProduct);
+//   if (removedProduct) {
+//       cout << "Removed: ";
+//       removedProduct->print();
+//       delete removedProduct; // Clean up the removed product
+//   }
+
+//   // Print the updated list
+//   productList.print();
+
+//   // Remove products up to "Cherry"
+//   productList.removeUpto("Cherry");
+
+//   // Print the final list
+//   productList.print();
+
+//   return 0;
+// }

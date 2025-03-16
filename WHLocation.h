@@ -12,9 +12,9 @@ class WHLocation: public Location{
     public:
     //constructor
     WHLocation();
-    virtual int getCapacity() const override;
-    virtual bool add(const string& productName, int amount) override;
-    virtual bool remove(int amount) override;
+    int getCapacity() const override;
+    bool add(const string& productName, int amount) override;
+    bool remove(int amount) override;
 
     private:
     static const char code;

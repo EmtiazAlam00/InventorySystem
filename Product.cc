@@ -122,3 +122,6 @@ void Product::print() const {
     cout << "Store Location: " << storeLocation->getId() << endl;
     cout << "Warehouse Locations: " << whLocations->size() << endl;
 }
+
+
+

@@ -45,6 +45,7 @@ void Queue:: popFirst(WHLocation** loc){
         tail = nullptr;
     }
     delete temp;
+    
 }
 
 void Queue::addLast(WHLocation* loc) {
@@ -56,6 +57,7 @@ void Queue::addLast(WHLocation* loc) {
         tail->next = newNode;
         tail = newNode;
     }
+    
 }
 
 void Queue::print() const {
